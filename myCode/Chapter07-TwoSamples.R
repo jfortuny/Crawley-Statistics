@@ -41,3 +41,22 @@ combined.ranks <- rank(ozone)
 tapply(combined.ranks, label, sum)
 # or
 wilcox.test(t.test.data$gardenA, t.test.data$gardenB)
+
+# Correlation and Covariance
+data <- read.csv("./data/twosample.csv")
+plot(data$x, data$y, pch=21, col="blue", bg="orange")
+
+# Calculation by hand
+var(data$x, data$y) / sqrt(var(data$x) * var(data$y))
+# by formula
+cor(data$x, data$y)
+
+
+# Scale-dependent correlations
+data <- read.csv("./data/productivity.csv")
+head(data)
+plot(data$productivity, data$mammals, pch=16, col="blue")
+cor.test(data$productivity, data$mammals, method = "spearman")
+
+# what is the effect of region in correlation
+plot(data$productivity, data$mammals, pch=16, col=as.numeric(data$region))
