@@ -12,3 +12,12 @@ for (i in 1:9) {
   lines(c(reg.data$tannin[i], reg.data$tannin[i]),
         c(reg.data$growth[i], fitted[i]), col="red")
 }
+
+# Graphing and analyzing the model
+model <- lm(reg.data$growth~reg.data$tannin)
+summary(model)
+summary.aov(model)
+par(mfrow=c(2,2))
+plot(model)
+par(mfrow=c(1,1))
+influence.measures(model)
